@@ -1,4 +1,4 @@
-# tourism
+# TravelMate
 
 Hackathon HEX
 
