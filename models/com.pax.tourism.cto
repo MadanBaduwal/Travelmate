@@ -1,0 +1,72 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace com.pax.tourism
+
+participant Tourist identified by emailId{
+  o String emailId
+  o String name
+  o Integer age
+  o String gender
+  o String country
+  o Double balance
+  o Integer phoneNumber
+  --> Destination[] visited optional
+  --> Destination[] toVisit optional
+}
+
+asset Destination identified by destinationName{
+  o String destinationName
+  o Double latitude
+  o Double longitude
+  o Double rating
+  o Integer noOfPeopleRated
+  o Integer noOfPeopleVisited
+  o String[] specialities optional
+  o String[] hotels optional
+}
+
+transaction CreateTourist{
+  o String emailId
+  o String name
+  o Integer age
+  o String gender
+  o String country
+  o Double balance
+  o Integer phoneNumber
+}
+
+transaction CreateDestination{
+  o String destinationName
+  o Double latitude
+  o Double longitude
+  o String[] specialities
+  o String[] hotels
+}
+
+transaction LocationToVisit{
+  o String emailId
+  o String destinationName
+}
+
+transaction VisitLocation{
+  o String emailId
+  o String destinationName
+}
+
+transaction RateLocation{
+  o String emailId
+  o String destinationName
+  o Double rating
+}
